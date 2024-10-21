@@ -4,7 +4,7 @@ import "github.com/logrusorgru/aurora/v3"
 
 const (
 	NAME    = "xurlbits"
-	VERSION = "0.0.0"
+	VERSION = "0.1.0"
 )
 
 // BANNER is this project's CLI display banner.

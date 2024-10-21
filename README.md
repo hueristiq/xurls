@@ -117,33 +117,33 @@ $ xurlbits -h
 help message:
 
 ```text
-                 _ 
-__  ___   _ _ __| |
-\ \/ / | | | '__| |
- >  <| |_| | |  | |
-/_/\_\\__,_|_|  |_| v0.0.0
 
-A CLI utility to pull out bits of URLs.
+                 _ _     _ _
+__  ___   _ _ __| | |__ (_) |_ ___
+\ \/ / | | | '__| | '_ \| | __/ __|
+ >  <| |_| | |  | | |_) | | |_\__ \
+/_/\_\\__,_|_|  |_|_.__/|_|\__|___/
+                             v0.1.0
 
 USAGE:
   xurlbits [MODE] [FORMATSTRING] [OPTIONS]
 
 INPUT:
-  -i, --input       input file (use `-` to get from stdin)
+     --urls string         target URLs list file path
 
 OUTPUT:
-  -m, --monochrome  disable output content coloring
-  -u, --unique      output unique values
-  -v, --verbosity   debug, info, warning, error, fatal or silent (default: info)
+     --monochrome bool     display no color output
+ -u, --unique bool         output unique values
+ -v, --verbosity           debug, info, warning, error, fatal or silent (default: info)
 
-MODE:
-  domains           the hostname (e.g. sub.example.com)
-  apexes            the apex domain (e.g. example.com from sub.example.com)
-  paths             the request path (e.g. /users)
-  query             `key=value` pairs from the query string (one per line)
-  params            keys from the query string (one per line)
-  values            values from the query string (one per line)
-  format            custom format (see below)
+MODES:
+ domains                   the hostname (e.g. sub.example.com)
+ apexes                    the apex domain (e.g. example.com from sub.example.com)
+ paths                     the request path (e.g. /users)
+ query                     `key=value` pairs from the query string (one per line)
+ params                    keys from the query string (one per line)
+ values                    query string values (one per line)
+ format                    custom format (see below)
 
 FORMAT DIRECTIVES:
   %%                a literal percent character
@@ -163,10 +163,6 @@ FORMAT DIRECTIVES:
   %?                inserts a question mark if a query string exists
   %#                inserts a hash if a fragment exists
   %a                authority (alias for %u%@%d%:%P)
-
-EXAMPLES:
-  cat urls.txt | xurlbits params -i -
-  cat urls.txt | xurlbits format %s://%h%p?%q -i -
 ```
 
 ### Examples
