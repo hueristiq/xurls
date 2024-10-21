@@ -77,7 +77,7 @@ go-test:
 
 # Build Go program
 # This target compiles the Go source code and generates a binary in the `bin/` directory.
-# The output binary is named after the project (`xtee`), and the source entry point is the main file in `cmd/$(PROJECT)/main.go`.
+# The output binary is named after the project (`xurlbits`), and the source entry point is the main file in `cmd/$(PROJECT)/main.go`.
 # The `LDFLAGS` flag is passed to optimize the binary size by stripping debug information.
 .PHONY: go-build
 go-build:

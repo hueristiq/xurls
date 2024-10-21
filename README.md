@@ -30,44 +30,44 @@
 
 ### Install release binaries (without Go installed)
 
-Visit the [releases page](https://github.com/hueristiq/xtee/releases) and find the appropriate archive for your operating system and architecture. Download the archive from your browser or copy its URL and retrieve it with `wget` or `curl`:
+Visit the [releases page](https://github.com/hueristiq/xurlbits/releases) and find the appropriate archive for your operating system and architecture. Download the archive from your browser or copy its URL and retrieve it with `wget` or `curl`:
 
 * ...with `wget`:
 
 	```bash
-	wget https://github.com/hueristiq/xtee/releases/download/v<version>/xtee-<version>-linux-amd64.tar.gz
+	wget https://github.com/hueristiq/xurlbits/releases/download/v<version>/xurlbits-<version>-linux-amd64.tar.gz
 	```
 
 * ...or, with `curl`:
 
 	```bash
-	curl -OL https://github.com/hueristiq/xtee/releases/download/v<version>/xtee-<version>-linux-amd64.tar.gz
+	curl -OL https://github.com/hueristiq/xurlbits/releases/download/v<version>/xurlbits-<version>-linux-amd64.tar.gz
 	```
 
 ...then, extract the binary:
 
 ```bash
-tar xf xtee-<version>-linux-amd64.tar.gz
+tar xf xurlbits-<version>-linux-amd64.tar.gz
 ```
 
 > [!TIP]
 > The above steps, download and extract, can be combined into a single step with this onliner
 > 
 > ```bash
-> curl -sL https://github.com/hueristiq/xtee/releases/download/v<version>/xtee-<version>-linux-amd64.tar.gz | tar -xzv
+> curl -sL https://github.com/hueristiq/xurlbits/releases/download/v<version>/xurlbits-<version>-linux-amd64.tar.gz | tar -xzv
 > ```
 
 > [!NOTE]
-> On Windows systems, you should be able to double-click the zip archive to extract the `xtee` executable.
+> On Windows systems, you should be able to double-click the zip archive to extract the `xurlbits` executable.
 
-...move the `xtee` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
+...move the `xurlbits` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
 
 ```bash
-sudo mv xtee /usr/local/bin/
+sudo mv xurlbits /usr/local/bin/
 ```
 
 > [!NOTE]
-> Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xtee` to their `PATH`.
+> Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xurlbits` to their `PATH`.
 
 ### Install source (with Go installed)
 
@@ -76,7 +76,7 @@ Before you install from source, you need to make sure that Go is installed on yo
 #### `go install ...`
 
 ```bash
-go install -v github.com/hueristiq/xtee/cmd/xtee@latest
+go install -v github.com/hueristiq/xurlbits/cmd/xurlbits@latest
 ```
 
 #### `go build ...` the development version
@@ -84,27 +84,27 @@ go install -v github.com/hueristiq/xtee/cmd/xtee@latest
 * Clone the repository
 
 	```bash
-	git clone https://github.com/hueristiq/xtee.git 
+	git clone https://github.com/hueristiq/xurlbits.git 
 	```
 
 * Build the utility
 
 	```bash
-	cd xtee/cmd/xtee && \
+	cd xurlbits/cmd/xurlbits && \
 	go build .
 	```
 
-* Move the `xtee` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
+* Move the `xurlbits` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
 
 	```bash
-	sudo mv xtee /usr/local/bin/
+	sudo mv xurlbits /usr/local/bin/
 	```
 
-	Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xtee` to their `PATH`.
+	Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xurlbits` to their `PATH`.
 
 
 > [!CAUTION]
-> While the development version is a good way to take a peek at `xtee`'s latest features before they get released, be aware that it may have bugs. Officially released versions will generally be more stable.
+> While the development version is a good way to take a peek at `xurlbits`'s latest features before they get released, be aware that it may have bugs. Officially released versions will generally be more stable.
 
 ## Usage
 
@@ -307,19 +307,19 @@ $ echo http://example.com:8080 | xurlbits format "%P" -i -
 
 ## Contributing
 
-We welcome contributions! Feel free to submit [Pull Requests](https://github.com/hueristiq/xtee/pulls) or report [Issues](https://github.com/hueristiq/xtee/issues). For more details, check out the [contribution guidelines](https://github.com/hueristiq/xtee/blob/master/CONTRIBUTING.md).
+We welcome contributions! Feel free to submit [Pull Requests](https://github.com/hueristiq/xurlbits/pulls) or report [Issues](https://github.com/hueristiq/xurlbits/issues). For more details, check out the [contribution guidelines](https://github.com/hueristiq/xurlbits/blob/master/CONTRIBUTING.md).
 
 ## Licensing
 
-This utility is licensed under the [MIT license](https://opensource.org/license/mit). You are free to use, modify, and distribute it, as long as you follow the terms of the license. You can find the full license text in the repository - [Full MIT license text](https://github.com/hueristiq/xtee/blob/master/LICENSE).
+This utility is licensed under the [MIT license](https://opensource.org/license/mit). You are free to use, modify, and distribute it, as long as you follow the terms of the license. You can find the full license text in the repository - [Full MIT license text](https://github.com/hueristiq/xurlbits/blob/master/LICENSE).
 
 ## Credits
 
 ### Contributors
 
-A huge thanks to all the contributors who have helped make `xtee` what it is today!
+A huge thanks to all the contributors who have helped make `xurlbits` what it is today!
 
-[![contributors](https://contrib.rocks/image?repo=hueristiq/xtee&max=500)](https://github.com/hueristiq/xtee/graphs/contributors)
+[![contributors](https://contrib.rocks/image?repo=hueristiq/xurlbits&max=500)](https://github.com/hueristiq/xurlbits/graphs/contributors)
 
 ### Similar Projects
 

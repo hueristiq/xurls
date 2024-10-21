@@ -24,4 +24,4 @@ Example: steps to reproduce the behavior:
 -->
 
 ### Anything else:
-<!-- Links? References? Screnshots? Anything that will give us more contextee about the issue that you are encountering! -->
+<!-- Links? References? Screnshots? Anything that will give us more contexurlbits about the issue that you are encountering! -->
