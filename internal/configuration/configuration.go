@@ -3,27 +3,18 @@ package configuration
 import "github.com/logrusorgru/aurora/v3"
 
 const (
-	// NAME is this projet's name
-	NAME string = "xurl"
-	// VERSION is this projet's version
-	VERSION string = "0.0.0"
-	// DESCRIPTION is this projet's description
-	DESCRIPTION string = "A CLI utility to pull out bits of URLs."
+	NAME    = "xurlbits"
+	VERSION = "0.0.0"
 )
 
-var (
-	// BANNER is this project's CLI display banner
-	BANNER = aurora.Sprintf(
-		aurora.BrightBlue(`
-                 _ 
-__  ___   _ _ __| |
-\ \/ / | | | '__| |
- >  <| |_| | |  | |
-/_/\_\\__,_|_|  |_| %s
-
-%s
-`).Bold(),
-		aurora.BrightYellow("v"+VERSION).Bold(),
-		aurora.BrightGreen(DESCRIPTION).Italic(),
-	)
+// BANNER is this project's CLI display banner.
+var BANNER = aurora.Sprintf(
+	aurora.BrightBlue(`
+                 _ _     _ _
+__  ___   _ _ __| | |__ (_) |_ ___
+\ \/ / | | | '__| | '_ \| | __/ __|
+ >  <| |_| | |  | | |_) | | |_\__ \
+/_/\_\\__,_|_|  |_|_.__/|_|\__|___/
+                             %s`).Bold(),
+	aurora.BrightRed("v"+VERSION).Bold(),
 )
