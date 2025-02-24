@@ -3,17 +3,17 @@
 SHELL = /bin/bash
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# --- Prepare | Setup ------------------------------------------------------------------------------------------------------------------------------------------------------
+# --- Git Hooks ------------------------------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .PHONY: git-hooks-install
 # Target: git-hooks-install
 # Purpose:
-#   Installs and configures Git hooks using Lefthook, a Git hooks manager.
-# Details:
-#   - First, the target checks if the `lefthook` command is available in the system PATH.
-#   - If `lefthook` is not installed, it installs the latest version using Go.
-#   - Finally, it executes `lefthook install` to set up Git hooks based on the repository's configuration.
+#   Installs and configures Git hooks using Lefthook—a tool for managing Git hooks.
+# Process:
+#   1. Checks if the `lefthook` command exists in the system PATH.
+#   2. If not found, installs the latest version via the Go package installer.
+#   3. Finally, runs `lefthook install` to apply the hook configuration defined in the repo.
 git-hooks-install:
 	@command -v lefthook || go install github.com/evilmartians/lefthook@latest; lefthook install
 
@@ -24,18 +24,19 @@ git-hooks-install:
 .PHONY: go-mod-clean
 # Target: go-mod-clean
 # Purpose:
-#   Cleans the Go module cache to remove any cached module files.
-# Details:
-#   - This target runs `go clean -modcache` which is useful if you encounter issues with outdated or corrupt module cache.
+#   Cleans the Go module cache, removing any cached module files.
+# Rationale:
+#   Useful when facing issues with outdated or corrupt module caches.
 go-mod-clean:
 	go clean -modcache
 
 .PHONY: go-mod-tidy
 # Target: go-mod-tidy
 # Purpose:
-#   Tidies up the go.mod file by adding missing and removing unused modules.
-# Details:
-#   - Running `go mod tidy` ensures that the go.mod file accurately reflects the dependencies used in the project.
+#   Tidies the go.mod file by ensuring it reflects the actual dependencies.
+# Process:
+#   - Adds any missing module requirements.
+#   - Removes modules that are no longer used in the project.
 go-mod-tidy:
 	go mod tidy
 
@@ -43,9 +44,12 @@ go-mod-tidy:
 # Target: go-mod-update
 # Purpose:
 #   Updates all Go modules to their latest versions.
-# Details:
-#   - First, updates test dependencies with the flags: -f (force), -t (include test packages), and -u (update).
-#   - Then, updates all other dependencies.
+# Process:
+#   - First command updates test dependencies using flags:
+#     - `-f` forces updates, 
+#     - `-t` includes test packages, and 
+#     - `-u` requests updates.
+#   - Second command updates the rest of the dependencies.
 go-mod-update:
 	go get -f -t -u ./...
 	go get -f -u ./...
@@ -53,57 +57,54 @@ go-mod-update:
 .PHONY: go-fmt
 # Target: go-fmt
 # Purpose:
-#   Formats the Go source code.
+#   Formats all Go source code files to enforce a consistent code style.
 # Details:
-#   - Uses `go fmt ./...` to format all Go source files across the module, ensuring consistent code style.
+#   - Uses the built-in `go fmt` command which traverses all packages in the module.
 go-fmt:
 	go fmt ./...
 
 .PHONY: go-lint
 # Target: go-lint
 # Purpose:
-#   Lints the Go source code to catch potential issues and enforce code quality.
-# Details:
-#   - The target first ensures that the code is properly formatted by invoking the `go-fmt` target.
-#   - Then, it checks if `golangci-lint` is available; if not, it installs a specific version.
-#   - Finally, it runs the linter across all packages.
+#   Analyzes Go source code to identify potential issues, coding style violations,
+#   or other anomalies that might affect code quality.
+# Process:
+#   1. Calls the `go-fmt` target to ensure that code is properly formatted.
+#   2. Checks if `golangci-lint` is available; if not, installs a specific version.
+#   3. Runs the linter across all packages in the project.
 go-lint: go-fmt
-	@(command -v golangci-lint || go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.64.5) && golangci-lint run ./...
+	(command -v golangci-lint || go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.64.5) && golangci-lint run ./...
 
 .PHONY: go-test
 # Target: go-test
 # Purpose:
 #   Executes the test suite for the Go project.
 # Details:
-#   - Runs tests in verbose mode (`-v`) and with race condition detection (`-race`) to ensure thread safety.
-#   - The tests are executed for all packages in the module.
+#   - The tests are run in verbose mode (`-v`) to provide detailed output.
+#   - The `-race` flag is used to enable detection of race conditions.
+#   - This target applies to all packages within the module..
 go-test:
 	go test -v -race ./...
 
 .PHONY: go-build
+# Target: go-build
+# Purpose:
+#   Builds the Go program into an executable.
+# Details:
+#   - Uses `-v` for verbose build output.
+#   - `-ldflags '-s -w'` strips debugging information to reduce the executable size.
+#   - The built binary is output to the `bin` directory with a specified name.
 go-build:
 	go build -v -ldflags '-s -w' -o bin/xurlunpack3r cmd/xurlunpack3r/main.go
 
 .PHONY: go-install
+# Target: go-install
+# Purpose:
+#   Installs the Go program and its dependencies.
+# Details:
+#   - Uses `go install` to compile and install the binary to the Go workspace.
 go-install:
 	go install -v ./...
-
-# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# --- Docker ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-DOCKERCMD = docker
-DOCKERBUILD = $(DOCKERCMD) build
-
-DOCKERFILE := ./Dockerfile
-
-IMAGE_NAME = hueristiq/xurlunpack3r
-IMAGE_TAG = $(shell cat internal/configuration/configuration.go | grep "VERSION =" | sed 's/.*VERSION = "\([0-9.]*\)".*/\1/')
-IMAGE = $(IMAGE_NAME):$(IMAGE_TAG)
-
-.PHONY: docker-build
-docker-build:
-	@$(DOCKERBUILD) -f $(DOCKERFILE) -t $(IMAGE) -t $(IMAGE_NAME):latest .
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # --- Help -----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -115,14 +116,7 @@ docker-build:
 #   Displays an overview of available targets along with their descriptions.
 # Details:
 #   - When no target is provided, the default action (set by .DEFAULT_GOAL) is to show this help text.
-#   - This target prints categorized sections for environment management, Go commands, Docker commands, and help.
 help:
-	@echo ""
-	@echo "*****************************************************************************"
-	@echo ""
-	@echo "PROJECT : $(PROJECT)"
-	@echo ""
-	@echo "*****************************************************************************"
 	@echo ""
 	@echo "Available commands:"
 	@echo ""
@@ -139,13 +133,10 @@ help:
 	@echo "  go-build ................. Build Go program."
 	@echo "  go-install ............... Install Go program."
 	@echo ""
-	@echo " Docker Commands:"
-	@echo "  docker-build ............. Build Docker image."
-	@echo ""
 	@echo " Help Commands:"
 	@echo "  help ..................... Display this help information."
 	@echo ""
 
-# Set the default target to the help command.
-# This ensures that running `make` without arguments provides a summary of available targets.
+# Set the default target to "help".
+# This ensures that running `make` without specifying a target will display the help text.
 .DEFAULT_GOAL = help
