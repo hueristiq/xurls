@@ -1,11 +1,12 @@
-# xurlbits
+# xurlunpack3r
 
-![made with go](https://img.shields.io/badge/made%20with-Go-1E90FF.svg) [![go report card](https://goreportcard.com/badge/github.com/hueristiq/xurlbits)](https://goreportcard.com/report/github.com/hueristiq/xurlbits) [![release](https://img.shields.io/github/release/hueristiq/xurlbits?style=flat&color=1E90FF)](https://github.com/hueristiq/xurlbits/releases) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/xurlbits.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xurlbits/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/xurlbits.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xurlbits/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/license-MIT-gray.svg?color=1E90FF)](https://github.com/hueristiq/xurlbits/blob/master/LICENSE) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-1E90FF.svg) [![contribution](https://img.shields.io/badge/contributions-welcome-1E90FF.svg)](https://github.com/hueristiq/xurlbits/blob/master/CONTRIBUTING.md)
+![made with go](https://img.shields.io/badge/made%20with-Go-1E90FF.svg) [![go report card](https://goreportcard.com/badge/github.com/hueristiq/xurlunpack3r)](https://goreportcard.com/report/github.com/hueristiq/xurlunpack3r) [![release](https://img.shields.io/github/release/hueristiq/xurlunpack3r?style=flat&color=1E90FF)](https://github.com/hueristiq/xurlunpack3r/releases) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/xurlunpack3r.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xurlunpack3r/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/xurlunpack3r.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xurlunpack3r/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/license-MIT-gray.svg?color=1E90FF)](https://github.com/hueristiq/xurlunpack3r/blob/master/LICENSE) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-1E90FF.svg) [![contribution](https://img.shields.io/badge/contributions-welcome-1E90FF.svg)](https://github.com/hueristiq/xurlunpack3r/blob/master/CONTRIBUTING.md)
 
-`xurlbits` is a command-line interface (CLI) utility to pull out bits of URLs.
+`xurlunpack3r` is a command-line utility designed to extract specific parts from URLs.
 
 ## Resources
 
+* [Features](#features)
 * [Installation](#installation)
 	* [Install release binaries (Without Go Installed)](#install-release-binaries-without-go-installed)
 	* [Install source (With Go Installed)](#install-source-with-go-installed)
@@ -22,52 +23,55 @@
 		* [Custom Formats](#custom-formats)
 * [Contributing](#contributing)
 * [Licensing](#licensing)
-* [Credits](#credits)
-	* [Contributors](#contributors)
-	* [Similar Projects](#similar-projects)
+
+## Features
+
+- Multiple Extraction Modes
+- Custom Formats
+- Cross-Platform (Windows, Linux, and macOS)
 
 ## Installation
 
 ### Install release binaries (without Go installed)
 
-Visit the [releases page](https://github.com/hueristiq/xurlbits/releases) and find the appropriate archive for your operating system and architecture. Download the archive from your browser or copy its URL and retrieve it with `wget` or `curl`:
+Visit the [releases page](https://github.com/hueristiq/xurlunpack3r/releases) and find the appropriate archive for your operating system and architecture. Download the archive from your browser or copy its URL and retrieve it with `wget` or `curl`:
 
 * ...with `wget`:
 
 	```bash
-	wget https://github.com/hueristiq/xurlbits/releases/download/v<version>/xurlbits-<version>-linux-amd64.tar.gz
+	wget https://github.com/hueristiq/xurlunpack3r/releases/download/v<version>/xurlunpack3r-<version>-linux-amd64.tar.gz
 	```
 
 * ...or, with `curl`:
 
 	```bash
-	curl -OL https://github.com/hueristiq/xurlbits/releases/download/v<version>/xurlbits-<version>-linux-amd64.tar.gz
+	curl -OL https://github.com/hueristiq/xurlunpack3r/releases/download/v<version>/xurlunpack3r-<version>-linux-amd64.tar.gz
 	```
 
 ...then, extract the binary:
 
 ```bash
-tar xf xurlbits-<version>-linux-amd64.tar.gz
+tar xf xurlunpack3r-<version>-linux-amd64.tar.gz
 ```
 
 > [!TIP]
 > The above steps, download and extract, can be combined into a single step with this onliner
 > 
 > ```bash
-> curl -sL https://github.com/hueristiq/xurlbits/releases/download/v<version>/xurlbits-<version>-linux-amd64.tar.gz | tar -xzv
+> curl -sL https://github.com/hueristiq/xurlunpack3r/releases/download/v<version>/xurlunpack3r-<version>-linux-amd64.tar.gz | tar -xzv
 > ```
 
 > [!NOTE]
-> On Windows systems, you should be able to double-click the zip archive to extract the `xurlbits` executable.
+> On Windows systems, you should be able to double-click the zip archive to extract the `xurlunpack3r` executable.
 
-...move the `xurlbits` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
+...move the `xurlunpack3r` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
 
 ```bash
-sudo mv xurlbits /usr/local/bin/
+sudo mv xurlunpack3r /usr/local/bin/
 ```
 
 > [!NOTE]
-> Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xurlbits` to their `PATH`.
+> Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xurlunpack3r` to their `PATH`.
 
 ### Install source (with Go installed)
 
@@ -76,7 +80,7 @@ Before you install from source, you need to make sure that Go is installed on yo
 #### `go install ...`
 
 ```bash
-go install -v github.com/hueristiq/xurlbits/cmd/xurlbits@latest
+go install -v github.com/hueristiq/xurlunpack3r/cmd/xurlunpack3r@latest
 ```
 
 #### `go build ...` the development version
@@ -84,57 +88,49 @@ go install -v github.com/hueristiq/xurlbits/cmd/xurlbits@latest
 * Clone the repository
 
 	```bash
-	git clone https://github.com/hueristiq/xurlbits.git 
+	git clone https://github.com/hueristiq/xurlunpack3r.git 
 	```
 
 * Build the utility
 
 	```bash
-	cd xurlbits/cmd/xurlbits && \
+	cd xurlunpack3r/cmd/xurlunpack3r && \
 	go build .
 	```
 
-* Move the `xurlbits` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
+* Move the `xurlunpack3r` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
 
 	```bash
-	sudo mv xurlbits /usr/local/bin/
+	sudo mv xurlunpack3r /usr/local/bin/
 	```
 
-	Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xurlbits` to their `PATH`.
+	Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xurlunpack3r` to their `PATH`.
 
 
 > [!CAUTION]
-> While the development version is a good way to take a peek at `xurlbits`'s latest features before they get released, be aware that it may have bugs. Officially released versions will generally be more stable.
+> While the development version is a good way to take a peek at `xurlunpack3r`'s latest features before they get released, be aware that it may have bugs. Officially released versions will generally be more stable.
 
 ## Usage
 
-To display help message for xurlbits use the `-h` flag:
+To display help message for xurlunpack3r use the `-h` flag:
 
 ```bash
-$ xurlbits -h
+xurlunpack3r -h
 ```
 
 help message:
 
 ```text
 
-                 _ _     _ _
-__  ___   _ _ __| | |__ (_) |_ ___
-\ \/ / | | | '__| | '_ \| | __/ __|
- >  <| |_| | |  | | |_) | | |_\__ \
-/_/\_\\__,_|_|  |_|_.__/|_|\__|___/
-                             v0.1.0
+                 _                              _    _____
+__  ___   _ _ __| |_   _ _ __  _ __   __ _  ___| | _|___ / _ __
+\ \/ / | | | '__| | | | | '_ \| '_ \ / _` |/ __| |/ / |_ \| '__|
+ >  <| |_| | |  | | |_| | | | | |_) | (_| | (__|   < ___) | |
+/_/\_\\__,_|_|  |_|\__,_|_| |_| .__/ \__,_|\___|_|\_\____/|_|
+                              |_|                         v0.1.0
 
 USAGE:
-  xurlbits [MODE] [FORMATSTRING] [OPTIONS]
-
-INPUT:
-     --urls string         target URLs list file path
-
-OUTPUT:
-     --monochrome bool     display no color output
- -u, --unique bool         output unique values
- -v, --verbosity           debug, info, warning, error, fatal or silent (default: info)
+ xurlunpack3r [MODE] [FORMATSTRING] [OPTIONS]
 
 MODES:
  domains                   the hostname (e.g. sub.example.com)
@@ -146,23 +142,37 @@ MODES:
  format                    custom format (see below)
 
 FORMAT DIRECTIVES:
-  %%                a literal percent character
-  %s                the request scheme (e.g. https)
-  %u                the user info (e.g. user:pass)
-  %d                the domain (e.g. sub.example.com)
-  %S                the subdomain (e.g. sub)
-  %r                the root of domain (e.g. example)
-  %t                the TLD (e.g. com)
-  %P                the port (e.g. 8080)
-  %p                the path (e.g. /users)
-  %e                the path's file extension (e.g. jpg, html)
-  %q                the raw query string (e.g. a=1&b=2)
-  %f                the page fragment (e.g. page-section)
-  %@                inserts an @ if user info is specified
-  %:                inserts a colon if a port is specified
-  %?                inserts a question mark if a query string exists
-  %#                inserts a hash if a fragment exists
-  %a                authority (alias for %u%@%d%:%P)
+  %%                       a literal percent character
+  %s                       the request scheme (e.g. https)
+  %u                       the user info (e.g. user:pass)
+  %d                       the domain (e.g. sub.example.com)
+  %S                       the subdomain (e.g. sub)
+  %r                       the root of domain (e.g. example)
+  %t                       the TLD (e.g. com)
+  %P                       the port (e.g. 8080)
+  %p                       the path (e.g. /users)
+  %e                       the path's file extension (e.g. jpg, html)
+  %q                       the raw query string (e.g. a=1&b=2)
+  %f                       the page fragment (e.g. page-section)
+  %@                       inserts an @ if user info is specified
+  %:                       inserts a colon if a port is specified
+  %?                       inserts a question mark if a query string exists
+  %#                       inserts a hash if a fragment exists
+  %a                       authority (alias for %u%@%d%:%P)
+
+INPUT:
+ -u, --url string[]        target URL
+ -l, --list string         target URLs list file path
+
+TIP: For multiple input URLs use comma(,) separated value with `-u`,
+     specify multiple `-u`, load from file with `-l` or load from stdin.
+
+OUTPUT:
+     --unique bool         output unique values
+     --monochrome bool     display no color output
+ -s, --silent bool         stdout values only output
+ -v, --verbose bool        stdout verbose output
+
 ```
 
 ### Examples
@@ -180,7 +190,7 @@ http://example.net/about#contact
 You can extract the domains from the URLs with the `domains` mode:
 
 ```
-$ cat urls.txt | xurlbits domains -i -
+$ cat urls.txt | xurlunpack3r domains -i -
 
 sub.example.com
 sub.example.com
@@ -190,7 +200,7 @@ example.net
 If you don't want to output duplicate values you can use the `-u` or `--unique` flag:
 
 	```
-	$ cat urls.txt | xurlbits domains  -i - --unique
+	$ cat urls.txt | xurlunpack3r domains  -i - --unique
 	sub.example.com
 	example.net
 	```
@@ -210,7 +220,7 @@ example.net
 #### Paths
 
 ```
-$ cat urls.txt | xurlbits paths -i -
+$ cat urls.txt | xurlunpack3r paths -i -
 
 /users
 /orgs
@@ -220,7 +230,7 @@ $ cat urls.txt | xurlbits paths -i -
 #### Query String Key/Value Pairs
 
 ```
-$ cat urls.txt | xurlbits query -i -
+$ cat urls.txt | xurlunpack3r query -i -
 
 id=123
 name=Sam
@@ -230,7 +240,7 @@ org=ExCo
 #### Query String Keys (Parameters)
 
 ```
-$ cat urls.txt | xurlbits params -i -
+$ cat urls.txt | xurlunpack3r params -i -
 
 id
 name
@@ -240,7 +250,7 @@ org
 #### Query String Values
 
 ```
-$ cat urls.txt | xurlbits values -i -
+$ cat urls.txt | xurlunpack3r values -i -
 
 123
 Sam
@@ -252,7 +262,7 @@ ExCo
 You can use the `format` mode to specify a custom output format:
 
 ```
-$ cat urls.txt | xurlbits format %d%p -i -
+$ cat urls.txt | xurlunpack3r format %d%p -i -
 
 sub.example.com/users
 sub.example.com/orgs
@@ -281,12 +291,12 @@ The available format directives are:
 %a  Authority (alias for %u%@%d%:%P)
 ```
 
-> For more format directives, checkout the help message `xurlbits -h` under `Format Directives`. 
+> For more format directives, checkout the help message `xurlunpack3r -h` under `Format Directives`. 
 
 Any characters that don't match a format directive remain untouched:
 
 ```
-$ cat urls.txt | xurlbits format "%d (%s)"  -i - -u
+$ cat urls.txt | xurlunpack3r format "%d (%s)"  -i - -u
 
 sub.example.com (https)
 example.net (http)
@@ -295,30 +305,20 @@ example.net (http)
 **Note** that if a URL does not include the data requested, there will be no output for that URL:
 
 ```
-$ echo http://example.com | xurlbits format "%P"  -i -
+$ echo http://example.com | xurlunpack3r format "%P"  -i -
 
-$ echo http://example.com:8080 | xurlbits format "%P" -i -
+$ echo http://example.com:8080 | xurlunpack3r format "%P" -i -
 8080
 ```
 
 ## Contributing
 
-We welcome contributions! Feel free to submit [Pull Requests](https://github.com/hueristiq/xurlbits/pulls) or report [Issues](https://github.com/hueristiq/xurlbits/issues). For more details, check out the [contribution guidelines](https://github.com/hueristiq/xurlbits/blob/master/CONTRIBUTING.md).
+Feel free to submit [Pull Requests](https://github.com/hueristiq/xurlunpack3r/pulls) or report [Issues](https://github.com/hueristiq/xurlunpack3r/issues). For more details, check out the [contribution guidelines](https://github.com/hueristiq/xurlunpack3r/blob/master/CONTRIBUTING.md).
+
+Huge thanks to the [contributors](https://github.com/hueristiq/xurlunpack3r/graphs/contributors) thus far!
+
+![contributors](https://contrib.rocks/image?repo=hueristiq/xurlunpack3r&max=500)
 
 ## Licensing
 
-This utility is licensed under the [MIT license](https://opensource.org/license/mit). You are free to use, modify, and distribute it, as long as you follow the terms of the license. You can find the full license text in the repository - [Full MIT license text](https://github.com/hueristiq/xurlbits/blob/master/LICENSE).
-
-## Credits
-
-### Contributors
-
-A huge thanks to all the contributors who have helped make `xurlbits` what it is today!
-
-[![contributors](https://contrib.rocks/image?repo=hueristiq/xurlbits&max=500)](https://github.com/hueristiq/xurlbits/graphs/contributors)
-
-### Similar Projects
-
-If you're interested in more utilities like this, check out:
-
-* [Tom Hudson](https://github.com/tomnomnom), we took the initial code from his [unfurl](https://github.com/tomnomnom/unfurl).
+This package is licensed under the [MIT license](https://opensource.org/license/mit). You are free to use, modify, and distribute it, as long as you follow the terms of the license. You can find the full license text in the repository - [Full MIT license text](https://github.com/hueristiq/xurlunpack3r/blob/master/LICENSE).

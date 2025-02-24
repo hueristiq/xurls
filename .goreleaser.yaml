@@ -4,9 +4,9 @@ before:
 
 builds:
     -
-        id: xurlbits-cli
-        main: cmd/xurlbits/main.go
-        binary: xurlbits
+        id: xurlunpack3r-cli
+        main: cmd/xurlunpack3r/main.go
+        binary: xurlunpack3r
 
         env:
             - CGO_ENABLED=0
@@ -38,7 +38,7 @@ archives:
     -
         id: tgz
         builds: 
-            - xurlbits-cli
+            - xurlunpack3r-cli
         format: tar.gz
         format_overrides:
             -
