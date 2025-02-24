@@ -1,15 +1,10 @@
-module github.com/hueristiq/xurl
+module github.com/hueristiq/xurlunpack3r
 
-go 1.20
-
-require (
-	github.com/hueristiq/hqgoutils v0.0.0-20230313202103-053eefb3d3ec
-	github.com/logrusorgru/aurora/v3 v3.0.0
-	github.com/spf13/pflag v1.0.5
-)
+go 1.23.3
 
 require (
-	golang.org/x/net v0.7.0 // indirect
-	golang.org/x/sys v0.5.0 // indirect
-	golang.org/x/term v0.5.0 // indirect
+	github.com/logrusorgru/aurora/v4 v4.0.0
+	github.com/spf13/pflag v1.0.6
+	go.source.hueristiq.com/logger v0.0.0-20250224134018-212c4546deb7
+	go.source.hueristiq.com/url v0.0.0-20250212180013-cf9654cb75ee
 )

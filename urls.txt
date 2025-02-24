@@ -1,3 +1,4 @@
 https://sub.example.com/users?id=123&name=Sam
 https://sub.example.com/orgs?org=ExCo#about
 http://example.net/about#contact
+example.net/about#contact
