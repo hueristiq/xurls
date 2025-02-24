@@ -2,27 +2,27 @@
 
 ![made with go](https://img.shields.io/badge/made%20with-Go-1E90FF.svg) [![go report card](https://goreportcard.com/badge/github.com/hueristiq/xurlunpack3r)](https://goreportcard.com/report/github.com/hueristiq/xurlunpack3r) [![release](https://img.shields.io/github/release/hueristiq/xurlunpack3r?style=flat&color=1E90FF)](https://github.com/hueristiq/xurlunpack3r/releases) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/xurlunpack3r.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xurlunpack3r/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/xurlunpack3r.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xurlunpack3r/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/license-MIT-gray.svg?color=1E90FF)](https://github.com/hueristiq/xurlunpack3r/blob/master/LICENSE) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-1E90FF.svg) [![contribution](https://img.shields.io/badge/contributions-welcome-1E90FF.svg)](https://github.com/hueristiq/xurlunpack3r/blob/master/CONTRIBUTING.md)
 
-`xurlunpack3r` is a command-line utility designed to extract specific parts from URLs.
+`xurlunpack3r` is a command-line utility designed to extract specific parts of URLs.
 
 ## Resources
 
-* [Features](#features)
-* [Installation](#installation)
-	* [Install release binaries (Without Go Installed)](#install-release-binaries-without-go-installed)
-	* [Install source (With Go Installed)](#install-source-with-go-installed)
-		* [`go install ...`](#go-install)
-		* [`go build ...` the development Version](#go-build--the-development-version)
-* [Usage](#usage)
-	* [Examples](#examples)
-		* [Domains](#domains)
-		* [Apex Domains](#apex-domains)
-		* [Paths](#paths)
-		* [Query String Key/Value Pairs](#query-string-keyvalue-pairs)
-		* [Query String Keys (Parameters)](#query-string-keys-parameters)
-		* [Query String Values](#query-string-values)
-		* [Custom Formats](#custom-formats)
-* [Contributing](#contributing)
-* [Licensing](#licensing)
+- [Features](#features)
+- [Installation](#installation)
+	- [Install release binaries (Without Go Installed)](#install-release-binaries-without-go-installed)
+	- [Install source (With Go Installed)](#install-source-with-go-installed)
+		- [`go install ...`](#go-install)
+		- [`go build ...` the development Version](#go-build--the-development-version)
+- [Usage](#usage)
+	- [Examples](#examples)
+		- [Domains](#domains)
+		- [Apex Domains](#apex-domains)
+		- [Paths](#paths)
+		- [Query String Key/Value Pairs](#query-string-keyvalue-pairs)
+		- [Query String Keys (Parameters)](#query-string-keys-parameters)
+		- [Query String Values](#query-string-values)
+		- [Custom Formats](#custom-formats)
+- [Contributing](#contributing)
+- [Licensing](#licensing)
 
 ## Features
 
@@ -36,13 +36,13 @@
 
 Visit the [releases page](https://github.com/hueristiq/xurlunpack3r/releases) and find the appropriate archive for your operating system and architecture. Download the archive from your browser or copy its URL and retrieve it with `wget` or `curl`:
 
-* ...with `wget`:
+- ...with `wget`:
 
 	```bash
 	wget https://github.com/hueristiq/xurlunpack3r/releases/download/v<version>/xurlunpack3r-<version>-linux-amd64.tar.gz
 	```
 
-* ...or, with `curl`:
+- ...or, with `curl`:
 
 	```bash
 	curl -OL https://github.com/hueristiq/xurlunpack3r/releases/download/v<version>/xurlunpack3r-<version>-linux-amd64.tar.gz
@@ -85,20 +85,20 @@ go install -v github.com/hueristiq/xurlunpack3r/cmd/xurlunpack3r@latest
 
 #### `go build ...` the development version
 
-* Clone the repository
+- Clone the repository
 
 	```bash
 	git clone https://github.com/hueristiq/xurlunpack3r.git 
 	```
 
-* Build the utility
+- Build the utility
 
 	```bash
 	cd xurlunpack3r/cmd/xurlunpack3r && \
 	go build .
 	```
 
-* Move the `xurlunpack3r` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
+- Move the `xurlunpack3r` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
 
 	```bash
 	sudo mv xurlunpack3r /usr/local/bin/
@@ -177,33 +177,42 @@ OUTPUT:
 
 ### Examples
 
+```bash
+cat urls.txt
 ```
-$ cat urls.txt
 
+```
 https://sub.example.com/users?id=123&name=Sam
 https://sub.example.com/orgs?org=ExCo#about
 http://example.net/about#contact
+example.net/about#contact
 ```
 
 #### Domains
 
 You can extract the domains from the URLs with the `domains` mode:
 
+```bash
+cat urls.txt | xurlunpack3r domains 
 ```
-$ cat urls.txt | xurlunpack3r domains -i -
 
+```
 sub.example.com
 sub.example.com
 example.net
+example.net
 ```
 
-If you don't want to output duplicate values you can use the `-u` or `--unique` flag:
+If you don't want to output duplicate values you can use the `--unique` flag:
 
-	```
-	$ cat urls.txt | xurlunpack3r domains  -i - --unique
-	sub.example.com
-	example.net
-	```
+```bash
+cat urls.txt | xurlunpack3r domains --unique
+```
+
+```
+sub.example.com
+example.net
+```
 
 The `-u`/`--unique` flag works for all modes.
 
@@ -211,17 +220,22 @@ The `-u`/`--unique` flag works for all modes.
 
 You can extract the apex part of the domain (e.g. the `example.com` in `http://sub.example.com`) using the `apexes` mode:
 
+```bash
+cat urls.txt | xurlunpack3r apexes --unique 
 ```
-$ cat urls.txt | unfurl apexes -i - -u
+
+```
 example.com
 example.net
 ```
 
 #### Paths
 
+```bash
+cat urls.txt | xurlunpack3r paths --unique 
 ```
-$ cat urls.txt | xurlunpack3r paths -i -
 
+```
 /users
 /orgs
 /about
@@ -229,9 +243,11 @@ $ cat urls.txt | xurlunpack3r paths -i -
 
 #### Query String Key/Value Pairs
 
+```bash
+cat urls.txt | xurlunpack3r query
 ```
-$ cat urls.txt | xurlunpack3r query -i -
 
+```
 id=123
 name=Sam
 org=ExCo
@@ -239,9 +255,11 @@ org=ExCo
 
 #### Query String Keys (Parameters)
 
+```bash
+cat urls.txt | xurlunpack3r params
 ```
-$ cat urls.txt | xurlunpack3r params -i -
 
+```
 id
 name
 org
@@ -249,9 +267,11 @@ org
 
 #### Query String Values
 
+```bash
+cat urls.txt | xurlunpack3r values
 ```
-$ cat urls.txt | xurlunpack3r values -i -
 
+```
 123
 Sam
 ExCo
@@ -261,9 +281,11 @@ ExCo
 
 You can use the `format` mode to specify a custom output format:
 
+```bash
+cat urls.txt | xurlunpack3r format %d%p
 ```
-$ cat urls.txt | xurlunpack3r format %d%p -i -
 
+```
 sub.example.com/users
 sub.example.com/orgs
 example.net/about
@@ -295,21 +317,16 @@ The available format directives are:
 
 Any characters that don't match a format directive remain untouched:
 
+```bash
+cat urls.txt | xurlunpack3r format "%d (%s)"
 ```
-$ cat urls.txt | xurlunpack3r format "%d (%s)"  -i - -u
 
+```
 sub.example.com (https)
 example.net (http)
 ```
 
 **Note** that if a URL does not include the data requested, there will be no output for that URL:
-
-```
-$ echo http://example.com | xurlunpack3r format "%P"  -i -
-
-$ echo http://example.com:8080 | xurlunpack3r format "%P" -i -
-8080
-```
 
 ## Contributing
 
