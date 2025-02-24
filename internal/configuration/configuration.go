@@ -4,7 +4,7 @@ import "github.com/logrusorgru/aurora/v4"
 
 const (
 	NAME    = "xurlunpack3r"
-	VERSION = "0.1.0"
+	VERSION = "0.0.0"
 )
 
 var BANNER = func(au *aurora.Aurora) (banner string) {
