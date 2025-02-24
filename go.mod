@@ -1,4 +1,4 @@
-module github.com/hueristiq/xurlunpack3r
+module github.com/hueristiq/xurl
 
 go 1.23.3
 

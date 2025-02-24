@@ -1,8 +1,8 @@
-# xurlunpack3r
+# xurl
 
-![made with go](https://img.shields.io/badge/made%20with-Go-1E90FF.svg) [![go report card](https://goreportcard.com/badge/github.com/hueristiq/xurlunpack3r)](https://goreportcard.com/report/github.com/hueristiq/xurlunpack3r) [![release](https://img.shields.io/github/release/hueristiq/xurlunpack3r?style=flat&color=1E90FF)](https://github.com/hueristiq/xurlunpack3r/releases) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/xurlunpack3r.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xurlunpack3r/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/xurlunpack3r.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xurlunpack3r/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/license-MIT-gray.svg?color=1E90FF)](https://github.com/hueristiq/xurlunpack3r/blob/master/LICENSE) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-1E90FF.svg) [![contribution](https://img.shields.io/badge/contributions-welcome-1E90FF.svg)](https://github.com/hueristiq/xurlunpack3r/blob/master/CONTRIBUTING.md)
+![made with go](https://img.shields.io/badge/made%20with-Go-1E90FF.svg) [![go report card](https://goreportcard.com/badge/github.com/hueristiq/xurl)](https://goreportcard.com/report/github.com/hueristiq/xurl) [![release](https://img.shields.io/github/release/hueristiq/xurl?style=flat&color=1E90FF)](https://github.com/hueristiq/xurl/releases) [![open issues](https://img.shields.io/github/issues-raw/hueristiq/xurl.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xurl/issues?q=is:issue+is:open) [![closed issues](https://img.shields.io/github/issues-closed-raw/hueristiq/xurl.svg?style=flat&color=1E90FF)](https://github.com/hueristiq/xurl/issues?q=is:issue+is:closed) [![license](https://img.shields.io/badge/license-MIT-gray.svg?color=1E90FF)](https://github.com/hueristiq/xurl/blob/master/LICENSE) ![maintenance](https://img.shields.io/badge/maintained%3F-yes-1E90FF.svg) [![contribution](https://img.shields.io/badge/contributions-welcome-1E90FF.svg)](https://github.com/hueristiq/xurl/blob/master/CONTRIBUTING.md)
 
-`xurlunpack3r` is a command-line utility designed to extract specific parts of URLs.
+`xurl` is a command-line utility designed to extract specific parts of URLs.
 
 ## Resources
 
@@ -34,44 +34,44 @@
 
 ### Install release binaries (without Go installed)
 
-Visit the [releases page](https://github.com/hueristiq/xurlunpack3r/releases) and find the appropriate archive for your operating system and architecture. Download the archive from your browser or copy its URL and retrieve it with `wget` or `curl`:
+Visit the [releases page](https://github.com/hueristiq/xurl/releases) and find the appropriate archive for your operating system and architecture. Download the archive from your browser or copy its URL and retrieve it with `wget` or `curl`:
 
 - ...with `wget`:
 
 	```bash
-	wget https://github.com/hueristiq/xurlunpack3r/releases/download/v<version>/xurlunpack3r-<version>-linux-amd64.tar.gz
+	wget https://github.com/hueristiq/xurl/releases/download/v<version>/xurl-<version>-linux-amd64.tar.gz
 	```
 
 - ...or, with `curl`:
 
 	```bash
-	curl -OL https://github.com/hueristiq/xurlunpack3r/releases/download/v<version>/xurlunpack3r-<version>-linux-amd64.tar.gz
+	curl -OL https://github.com/hueristiq/xurl/releases/download/v<version>/xurl-<version>-linux-amd64.tar.gz
 	```
 
 ...then, extract the binary:
 
 ```bash
-tar xf xurlunpack3r-<version>-linux-amd64.tar.gz
+tar xf xurl-<version>-linux-amd64.tar.gz
 ```
 
 > [!TIP]
 > The above steps, download and extract, can be combined into a single step with this onliner
 > 
 > ```bash
-> curl -sL https://github.com/hueristiq/xurlunpack3r/releases/download/v<version>/xurlunpack3r-<version>-linux-amd64.tar.gz | tar -xzv
+> curl -sL https://github.com/hueristiq/xurl/releases/download/v<version>/xurl-<version>-linux-amd64.tar.gz | tar -xzv
 > ```
 
 > [!NOTE]
-> On Windows systems, you should be able to double-click the zip archive to extract the `xurlunpack3r` executable.
+> On Windows systems, you should be able to double-click the zip archive to extract the `xurl` executable.
 
-...move the `xurlunpack3r` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
+...move the `xurl` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
 
 ```bash
-sudo mv xurlunpack3r /usr/local/bin/
+sudo mv xurl /usr/local/bin/
 ```
 
 > [!NOTE]
-> Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xurlunpack3r` to their `PATH`.
+> Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xurl` to their `PATH`.
 
 ### Install source (with Go installed)
 
@@ -80,7 +80,7 @@ Before you install from source, you need to make sure that Go is installed on yo
 #### `go install ...`
 
 ```bash
-go install -v github.com/hueristiq/xurlunpack3r/cmd/xurlunpack3r@latest
+go install -v github.com/hueristiq/xurl/cmd/xurl@latest
 ```
 
 #### `go build ...` the development version
@@ -88,34 +88,34 @@ go install -v github.com/hueristiq/xurlunpack3r/cmd/xurlunpack3r@latest
 - Clone the repository
 
 	```bash
-	git clone https://github.com/hueristiq/xurlunpack3r.git 
+	git clone https://github.com/hueristiq/xurl.git 
 	```
 
 - Build the utility
 
 	```bash
-	cd xurlunpack3r/cmd/xurlunpack3r && \
+	cd xurl/cmd/xurl && \
 	go build .
 	```
 
-- Move the `xurlunpack3r` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
+- Move the `xurl` binary to somewhere in your `PATH`. For example, on GNU/Linux and OS X systems:
 
 	```bash
-	sudo mv xurlunpack3r /usr/local/bin/
+	sudo mv xurl /usr/local/bin/
 	```
 
-	Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xurlunpack3r` to their `PATH`.
+	Windows users can follow [How to: Add Tool Locations to the PATH Environment Variable](https://msdn.microsoft.com/en-us/library/office/ee537574(v=office.14).aspx) in order to add `xurl` to their `PATH`.
 
 
 > [!CAUTION]
-> While the development version is a good way to take a peek at `xurlunpack3r`'s latest features before they get released, be aware that it may have bugs. Officially released versions will generally be more stable.
+> While the development version is a good way to take a peek at `xurl`'s latest features before they get released, be aware that it may have bugs. Officially released versions will generally be more stable.
 
 ## Usage
 
-To display help message for xurlunpack3r use the `-h` flag:
+To display help message for xurl use the `-h` flag:
 
 ```bash
-xurlunpack3r -h
+xurl -h
 ```
 
 help message:
@@ -130,7 +130,7 @@ __  ___   _ _ __| |_   _ _ __  _ __   __ _  ___| | _|___ / _ __
                               |_|                         v0.1.0
 
 USAGE:
- xurlunpack3r [MODE] [FORMATSTRING] [OPTIONS]
+ xurl [MODE] [FORMATSTRING] [OPTIONS]
 
 MODES:
  domains                   the hostname (e.g. sub.example.com)
@@ -193,7 +193,7 @@ example.net/about#contact
 You can extract the domains from the URLs with the `domains` mode:
 
 ```bash
-cat urls.txt | xurlunpack3r domains 
+cat urls.txt | xurl domains 
 ```
 
 ```
@@ -206,7 +206,7 @@ example.net
 If you don't want to output duplicate values you can use the `--unique` flag:
 
 ```bash
-cat urls.txt | xurlunpack3r domains --unique
+cat urls.txt | xurl domains --unique
 ```
 
 ```
@@ -221,7 +221,7 @@ The `-u`/`--unique` flag works for all modes.
 You can extract the apex part of the domain (e.g. the `example.com` in `http://sub.example.com`) using the `apexes` mode:
 
 ```bash
-cat urls.txt | xurlunpack3r apexes --unique 
+cat urls.txt | xurl apexes --unique 
 ```
 
 ```
@@ -232,7 +232,7 @@ example.net
 #### Paths
 
 ```bash
-cat urls.txt | xurlunpack3r paths --unique 
+cat urls.txt | xurl paths --unique 
 ```
 
 ```
@@ -244,7 +244,7 @@ cat urls.txt | xurlunpack3r paths --unique
 #### Query String Key/Value Pairs
 
 ```bash
-cat urls.txt | xurlunpack3r query
+cat urls.txt | xurl query
 ```
 
 ```
@@ -256,7 +256,7 @@ org=ExCo
 #### Query String Keys (Parameters)
 
 ```bash
-cat urls.txt | xurlunpack3r params
+cat urls.txt | xurl params
 ```
 
 ```
@@ -268,7 +268,7 @@ org
 #### Query String Values
 
 ```bash
-cat urls.txt | xurlunpack3r values
+cat urls.txt | xurl values
 ```
 
 ```
@@ -282,7 +282,7 @@ ExCo
 You can use the `format` mode to specify a custom output format:
 
 ```bash
-cat urls.txt | xurlunpack3r format %d%p
+cat urls.txt | xurl format %d%p
 ```
 
 ```
@@ -313,12 +313,12 @@ The available format directives are:
 %a  Authority (alias for %u%@%d%:%P)
 ```
 
-> For more format directives, checkout the help message `xurlunpack3r -h` under `Format Directives`. 
+> For more format directives, checkout the help message `xurl -h` under `Format Directives`. 
 
 Any characters that don't match a format directive remain untouched:
 
 ```bash
-cat urls.txt | xurlunpack3r format "%d (%s)"
+cat urls.txt | xurl format "%d (%s)"
 ```
 
 ```
@@ -330,12 +330,12 @@ example.net (http)
 
 ## Contributing
 
-Feel free to submit [Pull Requests](https://github.com/hueristiq/xurlunpack3r/pulls) or report [Issues](https://github.com/hueristiq/xurlunpack3r/issues). For more details, check out the [contribution guidelines](https://github.com/hueristiq/xurlunpack3r/blob/master/CONTRIBUTING.md).
+Feel free to submit [Pull Requests](https://github.com/hueristiq/xurl/pulls) or report [Issues](https://github.com/hueristiq/xurl/issues). For more details, check out the [contribution guidelines](https://github.com/hueristiq/xurl/blob/master/CONTRIBUTING.md).
 
-Huge thanks to the [contributors](https://github.com/hueristiq/xurlunpack3r/graphs/contributors) thus far!
+Huge thanks to the [contributors](https://github.com/hueristiq/xurl/graphs/contributors) thus far!
 
-![contributors](https://contrib.rocks/image?repo=hueristiq/xurlunpack3r&max=500)
+![contributors](https://contrib.rocks/image?repo=hueristiq/xurl&max=500)
 
 ## Licensing
 
-This package is licensed under the [MIT license](https://opensource.org/license/mit). You are free to use, modify, and distribute it, as long as you follow the terms of the license. You can find the full license text in the repository - [Full MIT license text](https://github.com/hueristiq/xurlunpack3r/blob/master/LICENSE).
+This package is licensed under the [MIT license](https://opensource.org/license/mit). You are free to use, modify, and distribute it, as long as you follow the terms of the license. You can find the full license text in the repository - [Full MIT license text](https://github.com/hueristiq/xurl/blob/master/LICENSE).

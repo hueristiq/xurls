@@ -8,8 +8,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/hueristiq/xurlunpack3r/internal/configuration"
-	"github.com/hueristiq/xurlunpack3r/internal/input"
+	"github.com/hueristiq/xurl/internal/configuration"
+	"github.com/hueristiq/xurl/internal/input"
 	"github.com/logrusorgru/aurora/v4"
 	"github.com/spf13/pflag"
 	"go.source.hueristiq.com/logger"

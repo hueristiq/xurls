@@ -95,7 +95,7 @@ go-test:
 #   - `-ldflags '-s -w'` strips debugging information to reduce the executable size.
 #   - The built binary is output to the `bin` directory with a specified name.
 go-build:
-	go build -v -ldflags '-s -w' -o bin/xurlunpack3r cmd/xurlunpack3r/main.go
+	go build -v -ldflags '-s -w' -o bin/xurl cmd/xurl/main.go
 
 .PHONY: go-install
 # Target: go-install
