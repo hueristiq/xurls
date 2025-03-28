@@ -1,0 +1,72 @@
+package commands
+
+import (
+	"bufio"
+	"os"
+	"sync"
+
+	"github.com/hueristiq/xurls/internal/configuration"
+	"github.com/spf13/cobra"
+	"go.source.hueristiq.com/logger"
+	"go.source.hueristiq.com/url/extractor"
+)
+
+func Extract() (cmd *cobra.Command) {
+	var concurrency int
+
+	cmd = &cobra.Command{
+		Use:     "extract",
+		Aliases: []string{"e"},
+		Short:   "Command for extracting URLs from text.",
+		Long:    configuration.BANNER(au),
+		Run: func(_ *cobra.Command, _ []string) {
+			ex := extractor.New(extractor.WithScheme())
+
+			regex := ex.CompileRegex()
+
+			lines := make(chan string, concurrency)
+
+			go func() {
+				defer close(lines)
+
+				scanner := bufio.NewScanner(os.Stdin)
+
+				for scanner.Scan() {
+					line := scanner.Text()
+
+					if line != "" {
+						lines <- line
+					}
+				}
+
+				if err := scanner.Err(); err != nil {
+					logger.Error().Msg(err.Error())
+				}
+			}()
+
+			wg := &sync.WaitGroup{}
+
+			for range concurrency {
+				wg.Add(1)
+
+				go func() {
+					defer wg.Done()
+
+					for line := range lines {
+						URLs := regex.FindAllString(line, -1)
+
+						for _, URL := range URLs {
+							logger.Print().Msg(URL)
+						}
+					}
+				}()
+			}
+
+			wg.Wait()
+		},
+	}
+
+	cmd.Flags().IntVarP(&concurrency, "concurrency", "c", 30, "concurrency")
+
+	return cmd
+}
