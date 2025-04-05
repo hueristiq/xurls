@@ -6,10 +6,10 @@ import (
 	"strings"
 	"sync"
 
+	hqgologger "github.com/hueristiq/hq-go-logger"
 	"github.com/hueristiq/hq-go-url/extractor"
 	"github.com/hueristiq/xurls/internal/configuration"
 	"github.com/spf13/cobra"
-	hqgologger "github.com/hueristiq/hq-go-logger"
 )
 
 func Extract() (cmd *cobra.Command) {
