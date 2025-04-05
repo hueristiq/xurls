@@ -6,10 +6,10 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/hueristiq/hq-go-url/extractor"
 	"github.com/hueristiq/xurls/internal/configuration"
 	"github.com/spf13/cobra"
-	"go.source.hueristiq.com/logger"
-	"go.source.hueristiq.com/url/extractor"
+	hqgologger "github.com/hueristiq/hq-go-logger"
 )
 
 func Extract() (cmd *cobra.Command) {
@@ -49,7 +49,7 @@ func Extract() (cmd *cobra.Command) {
 				}
 
 				if err := scanner.Err(); err != nil {
-					logger.Error().Msg(err.Error())
+					hqgologger.Error().Msg(err.Error())
 				}
 			}()
 
@@ -65,7 +65,7 @@ func Extract() (cmd *cobra.Command) {
 						URLs := regex.FindAllString(line, -1)
 
 						for _, URL := range URLs {
-							logger.Print().Msg(URL)
+							hqgologger.Print().Msg(URL)
 						}
 					}
 				}()

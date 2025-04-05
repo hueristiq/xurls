@@ -8,11 +8,11 @@ import (
 	"strings"
 	"sync"
 
+	hqgologger "github.com/hueristiq/hq-go-logger"
+	"github.com/hueristiq/hq-go-url/parser"
 	"github.com/hueristiq/xurls/internal/configuration"
 	"github.com/hueristiq/xurls/internal/input"
 	"github.com/spf13/cobra"
-	"go.source.hueristiq.com/logger"
-	"go.source.hueristiq.com/url/parser"
 )
 
 type Extractor func(URL *parser.URL, format string) []string
@@ -57,7 +57,7 @@ func Parse() (cmd *cobra.Command) {
 
 			// If an unknown mode is provided, log a fatal error and exit
 			if !ok {
-				logger.Fatal().Msgf("unknown mode: %s", mode)
+				hqgologger.Fatal().Msgf("unknown mode: %s", mode)
 			}
 
 			URLs := make(chan string)
@@ -76,7 +76,7 @@ func Parse() (cmd *cobra.Command) {
 
 					file, err = os.Open(inputURLsListFilePath)
 					if err != nil {
-						logger.Error().Msg(err.Error())
+						hqgologger.Error().Msg(err.Error())
 					}
 
 					scanner := bufio.NewScanner(file)
@@ -90,7 +90,7 @@ func Parse() (cmd *cobra.Command) {
 					}
 
 					if err = scanner.Err(); err != nil {
-						logger.Error().Msg(err.Error())
+						hqgologger.Error().Msg(err.Error())
 					}
 
 					file.Close()
@@ -108,7 +108,7 @@ func Parse() (cmd *cobra.Command) {
 					}
 
 					if err = scanner.Err(); err != nil {
-						logger.Error().Msg(err.Error())
+						hqgologger.Error().Msg(err.Error())
 					}
 				}
 			}()
@@ -127,7 +127,7 @@ func Parse() (cmd *cobra.Command) {
 
 					parsed, err := p.Parse(URL)
 					if err != nil {
-						logger.Error().Msgf("parse failure: %s", err.Error())
+						hqgologger.Error().Msgf("parse failure: %s", err.Error())
 
 						return
 					}
@@ -144,7 +144,7 @@ func Parse() (cmd *cobra.Command) {
 							}
 						}
 
-						logger.Print().Msg(value)
+						hqgologger.Print().Msg(value)
 					}
 				}(URL)
 			}

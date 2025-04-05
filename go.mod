@@ -3,10 +3,10 @@ module github.com/hueristiq/xurls
 go 1.24.2
 
 require (
+	github.com/hueristiq/hq-go-logger v0.0.0-20250405145000-8b9c281d946c
+	github.com/hueristiq/hq-go-url v0.0.0-20250405142143-8bac2f398701
 	github.com/logrusorgru/aurora/v4 v4.0.0
 	github.com/spf13/cobra v1.9.1
-	go.source.hueristiq.com/logger v0.0.0-20250325004851-49d18d71c0c2
-	go.source.hueristiq.com/url v0.0.0-20250325220632-50a70fe324e6
 )
 
 require (
