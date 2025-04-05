@@ -3,6 +3,7 @@ package commands
 import (
 	"bufio"
 	"os"
+	"strings"
 	"sync"
 
 	"github.com/hueristiq/xurls/internal/configuration"
@@ -20,7 +21,7 @@ func Extract() (cmd *cobra.Command) {
 		Short:   "Command for extracting URLs from text.",
 		Long:    configuration.BANNER(au),
 		Run: func(_ *cobra.Command, _ []string) {
-			ex := extractor.New(extractor.WithScheme())
+			ex := extractor.New()
 
 			regex := ex.CompileRegex()
 
@@ -34,6 +35,14 @@ func Extract() (cmd *cobra.Command) {
 				for scanner.Scan() {
 					line := scanner.Text()
 
+					replacer := strings.NewReplacer(
+						"*", "",
+						`\u002f`, "/",
+						`\u0026`, "&",
+					)
+
+					line = replacer.Replace(line)
+				
 					if line != "" {
 						lines <- line
 					}
