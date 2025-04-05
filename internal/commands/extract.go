@@ -42,7 +42,7 @@ func Extract() (cmd *cobra.Command) {
 					)
 
 					line = replacer.Replace(line)
-				
+
 					if line != "" {
 						lines <- line
 					}
