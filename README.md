@@ -18,9 +18,9 @@
 
 ## Features
 
-- Extract URLs from text.
-- Decompose URLs into granular component.
-- Cross-Platform (Windows, Linux, and macOS).
+- Extract URLs from text
+- Decompose URLs into granular component
+- Cross-Platform (Windows, Linux, and macOS)
 
 ## Installation
 
