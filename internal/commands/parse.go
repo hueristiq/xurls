@@ -9,13 +9,13 @@ import (
 	"sync"
 
 	hqgologger "github.com/hueristiq/hq-go-logger"
-	"github.com/hueristiq/hq-go-url/parser"
+	hqgourlparser "github.com/hueristiq/hq-go-url/parser"
 	"github.com/hueristiq/xurl/internal/configuration"
 	"github.com/hueristiq/xurl/internal/input"
 	"github.com/spf13/cobra"
 )
 
-type Extractor func(URL *parser.URL, format string) []string
+type Extractor func(URL *hqgourlparser.URL, format string) []string
 
 func Parse() (cmd *cobra.Command) {
 	var (
@@ -115,7 +115,7 @@ func Parse() (cmd *cobra.Command) {
 
 			wg := &sync.WaitGroup{}
 
-			p := parser.New(parser.WithDefaultScheme("http"))
+			p := hqgourlparser.New(hqgourlparser.WithDefaultScheme("http"))
 
 			seen := &sync.Map{}
 
@@ -209,7 +209,7 @@ func Parse() (cmd *cobra.Command) {
 	return cmd
 }
 
-func Format(u *parser.URL, f string) []string {
+func Format(u *hqgourlparser.URL, f string) []string {
 	out := &bytes.Buffer{}
 
 	inFormat := false
@@ -330,19 +330,19 @@ func Format(u *parser.URL, f string) []string {
 	return []string{out.String()}
 }
 
-func Domains(u *parser.URL, _ string) []string {
+func Domains(u *hqgourlparser.URL, _ string) []string {
 	return Format(u, "%d")
 }
 
-func Apexes(u *parser.URL, _ string) []string {
+func Apexes(u *hqgourlparser.URL, _ string) []string {
 	return Format(u, "%r.%t")
 }
 
-func Paths(u *parser.URL, _ string) []string {
+func Paths(u *hqgourlparser.URL, _ string) []string {
 	return Format(u, "%p")
 }
 
-func Query(u *parser.URL, _ string) []string {
+func Query(u *hqgourlparser.URL, _ string) []string {
 	out := make([]string, 0)
 
 	for key, vals := range u.Query() {
@@ -354,7 +354,7 @@ func Query(u *parser.URL, _ string) []string {
 	return out
 }
 
-func Parameters(u *parser.URL, _ string) []string {
+func Parameters(u *hqgourlparser.URL, _ string) []string {
 	out := make([]string, 0)
 
 	for key := range u.Query() {
@@ -364,7 +364,7 @@ func Parameters(u *parser.URL, _ string) []string {
 	return out
 }
 
-func Values(u *parser.URL, _ string) []string {
+func Values(u *hqgourlparser.URL, _ string) []string {
 	out := make([]string, 0)
 
 	for _, value := range u.Query() {

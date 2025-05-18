@@ -1,9 +1,9 @@
 package commands
 
 import (
-	logger "github.com/hueristiq/hq-go-logger"
-	"github.com/hueristiq/hq-go-logger/formatter"
-	"github.com/hueristiq/hq-go-logger/levels"
+	hqgologger "github.com/hueristiq/hq-go-logger"
+	hqgologgerformatter "github.com/hueristiq/hq-go-logger/formatter"
+	hqgologgerlevels "github.com/hueristiq/hq-go-logger/levels"
 	"github.com/hueristiq/xurl/internal/configuration"
 	"github.com/logrusorgru/aurora/v4"
 	"github.com/spf13/cobra"
@@ -20,23 +20,23 @@ var (
 		Use:  configuration.NAME,
 		Long: configuration.BANNER(au),
 		PersistentPreRun: func(_ *cobra.Command, _ []string) {
-			logger.Info().Label("").Msg(configuration.BANNER(au))
+			hqgologger.Info().Label("").Msg(configuration.BANNER(au))
 		},
 	}
 )
 
 func init() {
 	cobra.OnInitialize(func() {
-		logger.DefaultLogger.SetFormatter(formatter.NewConsoleFormatter(&formatter.ConsoleFormatterConfiguration{
+		hqgologger.DefaultLogger.SetFormatter(hqgologgerformatter.NewConsoleFormatter(&hqgologgerformatter.ConsoleFormatterConfiguration{
 			Colorize: !monochrome,
 		}))
 
 		if verbose {
-			logger.DefaultLogger.SetMaxLogLevel(levels.LevelDebug)
+			hqgologger.DefaultLogger.SetLevel(hqgologgerlevels.LevelDebug)
 		}
 
 		if silent {
-			logger.DefaultLogger.SetMaxLogLevel(levels.LevelSilent)
+			hqgologger.DefaultLogger.SetLevel(hqgologgerlevels.LevelSilent)
 		}
 
 		au = aurora.New(aurora.WithColors(!monochrome))
@@ -52,6 +52,6 @@ func init() {
 
 func Execute() {
 	if err := rootCMD.Execute(); err != nil {
-		logger.Fatal().Msg(err.Error())
+		hqgologger.Fatal().Msg(err.Error())
 	}
 }
