@@ -10,8 +10,8 @@ import (
 
 	hqgologger "github.com/hueristiq/hq-go-logger"
 	"github.com/hueristiq/hq-go-url/parser"
-	"github.com/hueristiq/xurls/internal/configuration"
-	"github.com/hueristiq/xurls/internal/input"
+	"github.com/hueristiq/xurl/internal/configuration"
+	"github.com/hueristiq/xurl/internal/input"
 	"github.com/spf13/cobra"
 )
 

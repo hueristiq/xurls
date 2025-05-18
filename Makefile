@@ -35,7 +35,7 @@ go-test:
 	go test -v -race ./...
 
 go-build:
-	go build -v -ldflags '-s -w' -o bin/xurls cmd/xurls/main.go
+	go build -v -ldflags '-s -w' -o bin/xurl cmd/xurl/main.go
 
 go-install:
 	go install -v ./...

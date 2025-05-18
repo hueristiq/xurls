@@ -4,9 +4,9 @@ before:
 
 builds:
     -
-        id: xurls-cli
-        main: cmd/xurls/main.go
-        binary: xurls
+        id: xurl-cli
+        main: cmd/xurl/main.go
+        binary: xurl
 
         env:
             - CGO_ENABLED=0
@@ -38,7 +38,7 @@ archives:
     -
         id: tgz
         builds: 
-            - xurls-cli
+            - xurl-cli
         format: tar.gz
         format_overrides:
             -

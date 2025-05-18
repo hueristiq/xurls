@@ -1,10 +1,10 @@
 package commands
 
 import (
-	"github.com/hueristiq/hq-go-logger"
+	logger "github.com/hueristiq/hq-go-logger"
 	"github.com/hueristiq/hq-go-logger/formatter"
 	"github.com/hueristiq/hq-go-logger/levels"
-	"github.com/hueristiq/xurls/internal/configuration"
+	"github.com/hueristiq/xurl/internal/configuration"
 	"github.com/logrusorgru/aurora/v4"
 	"github.com/spf13/cobra"
 )

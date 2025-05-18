@@ -1,4 +1,4 @@
-module github.com/hueristiq/xurls
+module github.com/hueristiq/xurl
 
 go 1.24.2
 
