@@ -1,47 +1,42 @@
 SHELL = /bin/bash
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# --- Git Hooks Install ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# --- Setup ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-.PHONY: lefthook-install
-lefthook-install:
+.PHONY: install-lefthook
+
+install-lefthook:
 	(command -v lefthook || go install github.com/evilmartians/lefthook@latest) && lefthook install
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # --- Go(Golang) -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-.PHONY: go-mod-clean
+.PHONY: go-mod-clean go-mod-tidy go-mod-update go-fmt go-lint go-test go-build go-install
+
 go-mod-clean:
 	go clean -modcache
 
-.PHONY: go-mod-tidy
 go-mod-tidy:
 	go mod tidy
 
-.PHONY: go-mod-update
 go-mod-update:
 	go get -f -t -u ./...
 	go get -f -u ./...
 
-.PHONY: go-fmt
 go-fmt:
 	(command -v golangci-lint || go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.0.2) && golangci-lint fmt ./...
 
-.PHONY: go-lint
 go-lint: go-fmt
-	(command -v golangci-lint || go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.0.2) && golangci-lint run ./...
+	golangci-lint run ./...
 
-.PHONY: go-test
 go-test:
 	go test -v -race ./...
 
-.PHONY: go-build
 go-build:
 	go build -v -ldflags '-s -w' -o bin/xurls cmd/xurls/main.go
 
-.PHONY: go-install
 go-install:
 	go install -v ./...
 
@@ -50,15 +45,16 @@ go-install:
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .PHONY: help
+
 help:
 	@echo ""
 	@echo "Available commands:"
 	@echo ""
-	@echo " Setup Commands:"
+	@echo " Setup:"
 	@echo ""
-	@echo "  lefthook-install ......... Install Git hooks."
+	@echo "  install-lefthook ......... Install lefthook (Git hooks manager)."
 	@echo ""
-	@echo " Go Commands:"
+	@echo " Go (Golang):"
 	@echo ""
 	@echo "  go-mod-clean ............. Clean Go module cache."
 	@echo "  go-mod-tidy .............. Tidy Go modules."
@@ -69,7 +65,7 @@ help:
 	@echo "  go-build ................. Build Go program."
 	@echo "  go-install ............... Install Go program."
 	@echo ""
-	@echo " Help Commands:"
+	@echo " Help:"
 	@echo ""
 	@echo "  help ..................... Display this help information."
 	@echo ""
