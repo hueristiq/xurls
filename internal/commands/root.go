@@ -4,7 +4,7 @@ import (
 	hqgologger "github.com/hueristiq/hq-go-logger"
 	hqgologgerformatter "github.com/hueristiq/hq-go-logger/formatter"
 	hqgologgerlevels "github.com/hueristiq/hq-go-logger/levels"
-	"github.com/hueristiq/xurl/internal/configuration"
+	"github.com/hueristiq/xurls/internal/configuration"
 	"github.com/logrusorgru/aurora/v4"
 	"github.com/spf13/cobra"
 )
@@ -20,7 +20,7 @@ var (
 		Use:  configuration.NAME,
 		Long: configuration.BANNER(au),
 		PersistentPreRun: func(_ *cobra.Command, _ []string) {
-			hqgologger.Info().Label("").Msg(configuration.BANNER(au))
+			hqgologger.Info(configuration.BANNER(au), hqgologger.WithLabel(""))
 		},
 	}
 )
@@ -31,19 +31,19 @@ func init() {
 			Colorize: !monochrome,
 		}))
 
-		if verbose {
-			hqgologger.DefaultLogger.SetLevel(hqgologgerlevels.LevelDebug)
-		}
-
 		if silent {
 			hqgologger.DefaultLogger.SetLevel(hqgologgerlevels.LevelSilent)
+		}
+
+		if verbose {
+			hqgologger.DefaultLogger.SetLevel(hqgologgerlevels.LevelDebug)
 		}
 
 		au = aurora.New(aurora.WithColors(!monochrome))
 	})
 
-	rootCMD.AddCommand(Extract())
-	rootCMD.AddCommand(Parse())
+	rootCMD.AddCommand(Discover())
+	rootCMD.AddCommand(Dissect())
 
 	rootCMD.PersistentFlags().BoolVar(&monochrome, "monochrome", false, "display no color output")
 	rootCMD.PersistentFlags().BoolVarP(&silent, "silent", "s", false, "stdout values only output")
@@ -52,6 +52,6 @@ func init() {
 
 func Execute() {
 	if err := rootCMD.Execute(); err != nil {
-		hqgologger.Fatal().Msg(err.Error())
+		hqgologger.Fatal("failed!", hqgologger.WithError(err))
 	}
 }
