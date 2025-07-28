@@ -1,10 +1,16 @@
-module github.com/hueristiq/xurlunpack3r
+module github.com/hueristiq/xurls
 
-go 1.23.3
+go 1.24.2
 
 require (
+	github.com/hueristiq/hq-go-logger v0.0.0-20250608201202-1ee4959bff73
+	github.com/hueristiq/hq-go-url v0.0.0-20250513180855-22cafaf83fb4
 	github.com/logrusorgru/aurora/v4 v4.0.0
-	github.com/spf13/pflag v1.0.6
-	go.source.hueristiq.com/logger v0.0.0-20250224134018-212c4546deb7
-	go.source.hueristiq.com/url v0.0.0-20250212180013-cf9654cb75ee
+	github.com/spf13/cobra v1.9.1
+)
+
+require (
+	github.com/hueristiq/hq-go-errors v0.0.0-20250707141641-c0510ef7d8aa // indirect
+	github.com/inconshreveable/mousetrap v1.1.0 // indirect
+	github.com/spf13/pflag v1.0.7 // indirect
 )

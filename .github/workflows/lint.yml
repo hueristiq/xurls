@@ -27,7 +27,7 @@ jobs:
                 name: Set up Go
                 uses: actions/setup-go@v5
                 with:
-                    go-version:  '>=1.23'
+                    go-version:  '>=1.24'
                     cache: false
             -
                 name: Code Checkout
@@ -36,8 +36,8 @@ jobs:
                     fetch-depth: 0
             -
                 name: golangci-lint
-                uses: golangci/golangci-lint-action@v6
+                uses: golangci/golangci-lint-action@v8
                 with:
-                    version: v1.62.2
+                    version: v2.1.0
                     args: --timeout 5m
                     working-directory: .
