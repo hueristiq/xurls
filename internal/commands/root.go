@@ -45,9 +45,9 @@ func init() {
 	rootCMD.AddCommand(Discover())
 	rootCMD.AddCommand(Dissect())
 
-	rootCMD.PersistentFlags().BoolVar(&monochrome, "monochrome", false, "display no color output")
-	rootCMD.PersistentFlags().BoolVarP(&silent, "silent", "s", false, "stdout values only output")
-	rootCMD.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "stdout verbose output")
+	rootCMD.PersistentFlags().BoolVar(&monochrome, "monochrome", false, "disable colored console output")
+	rootCMD.PersistentFlags().BoolVarP(&silent, "silent", "s", false, "disable logging output, only results")
+	rootCMD.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "enable detailed debug logging output")
 }
 
 func Execute() {
